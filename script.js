@@ -22,7 +22,6 @@ function deleteBookmarks(index){
 }
 function buildBookmarks(){
     bookmarksContainer.textContent='';
-    if(bookmarks.length){
     bookmarks.forEach(function(website,index){
         const {websiteName,websiteUrl}=website;
         const item=document.createElement('div');
@@ -51,20 +50,17 @@ function buildBookmarks(){
         items.push(item);
     })
 }
-}
 function fetchBookmarks(){
     bookmarks=JSON.parse(localStorage.getItem('bookmarks'));
-    // if(bookmarks.length){
-    //     console.log(bookmarks.length)
-    // }else{
-    //     bookmarks=[
-    //         {
-    //             websiteName:'Google',
-    //             websiteUrl:'https://google.com'
-    //         }
-    //     ];
+    if(bookmarks===null || bookmarks.length===0){
+        bookmarks=[
+            {
+                websiteName:'Google',
+                websiteUrl:'https://google.com'
+            }
+        ];
         localStorage.setItem('bookmarks',JSON.stringify(bookmarks));
-    // }   
+    }   
     buildBookmarks();
 }
 function modalClose(){
