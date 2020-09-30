@@ -22,6 +22,7 @@ function deleteBookmarks(index){
 }
 function buildBookmarks(){
     bookmarksContainer.textContent='';
+    if(bookmarks.length){
     bookmarks.forEach(function(website,index){
         const {websiteName,websiteUrl}=website;
         const item=document.createElement('div');
@@ -49,6 +50,7 @@ function buildBookmarks(){
         bookmarksContainer.append(item);
         items.push(item);
     })
+}
 }
 function fetchBookmarks(){
     bookmarks=JSON.parse(localStorage.getItem('bookmarks'));
